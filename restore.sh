@@ -17,6 +17,17 @@ echo "[3/7] Forking GitHub repos..."
 bash "$ZO_RESTORE/repos.sh"
 echo "  ✅ Repos forked"
 
+echo "[3.5/7] Syncing zo-excellence-package (brain files, skills)..."
+EXCELLENCE="$WORKSPACE/zo-excellence-package"
+if [ -d "$EXCELLENCE/.git" ]; then
+  cd "$EXCELLENCE"
+  git pull origin main 2>&1 | tail -3
+  echo "  ✅ zo-excellence-package synced"
+else
+  git clone https://github.com/jvanleur2234-glitch/zo-excellence-package.git "$EXCELLENCE" 2>&1 | tail -3
+  echo "  ✅ zo-excellence-package cloned"
+fi
+
 echo "[4/7] Restoring Zo Space routes..."
 bash "$ZO_RESTORE/routes.sh"
 echo "  ✅ Space routes restored"

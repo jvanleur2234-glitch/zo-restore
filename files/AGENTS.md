@@ -15,7 +15,12 @@ This is Joseph's personal AI business system. It finds, analyzes, forks, install
 - **Zo Space Store**: https://josephv.zo.space
 
 ## Core Installed Tools
-- hermes (94 skills), megamemory, browser-use, prefect, penny, releaseguard, trivy
+- hermes (100+ skills including Taste-Skill), megamemory, browser-use, prefect, penny, releaseguard, trivy
+
+## zo-excellence-package (brain files)
+- Lives at: /home/workspace/zo-excellence-package
+- Brain files, skills, and shared knowledge synced from GitHub: jvanleur2234-glitch/zo-excellence-package
+- Key files: HERMES_CAPABILITIES.md, SOLOMON_OS.md, ARENA_AI.md, MegaPlan/
 
 ## Zo Space Routes
 Homepage `/`, checkout `/checkout`, game studio `/studio`, clonepilot `/clone`, spectocode `/spec`
