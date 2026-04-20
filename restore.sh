@@ -40,6 +40,17 @@ echo "[6/7] Restoring scheduled agents..."
 bash "$ZO_RESTORE/agents.sh"
 echo "  ✅ Agents scheduled"
 
+echo "[6.5/7] Setting up Solomon Heartbeat..."
+mkdir -p "$WORKSPACE/.agent/heartbeat/actions"
+mkdir -p "$WORKSPACE/solomon-vault/brain/activity_log"
+cp -r "$ZO_RESTORE/files/heartbeat/"* "$WORKSPACE/.agent/heartbeat/" 2>/dev/null || true
+chmod +x "$WORKSPACE/.agent/heartbeat/run_heartbeat.sh"
+chmod +x "$WORKSPACE/.agent/heartbeat/heartbeat.sh"
+chmod +x "$WORKSPACE/.agent/heartbeat/decision_engine.py"
+chmod +x "$WORKSPACE/.agent/heartbeat/actions/"*.py 2>/dev/null || true
+tmux new -s solomon-heartbeat -d "$WORKSPACE/.agent/heartbeat/run_heartbeat.sh" 2>/dev/null || true
+echo "  ✅ Solomon Heartbeat started"
+
 echo "[7/7] Registering services..."
 bash "$ZO_RESTORE/services.sh"
 echo "  ✅ Services registered"
