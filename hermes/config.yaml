@@ -1,0 +1,12 @@
+inference:
+  provider: nvidia
+  model: nvidia/minimaxai-minimax-m2.7
+  api_key: ${NVIDIA_API_KEY:-}
+memory:
+  provider: icarus
+  icarus_url: http://localhost:5001
+telegram:
+  enabled: false
+skills:
+  directory: skills/
+  auto_update: true

@@ -1,0 +1,3 @@
+#!/bin/bash
+DIR="$HOME/solomon-os"; cd "$DIR"
+case "$1" in status) cat solomon-vault/brain/activity_log/heartbeat_$(date +%Y-%m-%d).md 2>/dev/null | tail -3 ;; bus) bash solomon-bus/bus.sh "${2:-log}" ;; hermes) [ -x hermes/hermes ] && hermes/hermes "$@" || hermes "$@" ;; *) echo "Solomon OS — solomon {status|bus|hermes}"; esac
