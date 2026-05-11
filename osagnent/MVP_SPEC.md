@@ -139,3 +139,30 @@ osagnent/
 └── core/
     └── pattern_engine.py             # Pattern recognition + confidence scoring
 ```
+
+---
+
+## Phase 2: Auto-Learn Pipeline (TO DO)
+
+### What Phase 2 Does
+Connects the observe layer to the pattern engine and skill generator — so OSagnent goes from WATCHING to DOING automatically.
+
+### Phase 2 Architecture
+```
+observe/          pattern_engine/       generate/
+─────────       ────────────────      ─────────
+tool_logs   →   cluster_observations   →   generate_skill
+session_data →   score_confidence    →   test_skill  
+                task_sequences        →   deploy_skill
+                                       →   request_approval
+```
+
+### Phase 2 Files to Build
+1. `observe/auto_export.py` — exports logs in pattern_engine format
+2. `pattern_engine/learn.py` — batch learning from multiple sessions
+3. `generate/skill_generator.py` — creates Hermes SKILL.md from patterns
+4. `generate/self_improve.py` — refines skills from corrections
+
+### Phase 2 Status
+STATUS: NOT STARTED
+PRIORITY: HIGH
