@@ -1,0 +1,12 @@
+name: osagnent-cua
+version: 1.0.0
+description: OSagnent computer use — observe then act via Hermes cua protocol
+hooks:
+  pre_tool_call:
+    - osagnent_cua.hook_pre_tool
+  post_tool_call:
+    - osagnent_cua.hook_post_tool
+  on_agent_start:
+    - osagnent_cua.hook_start
+  on_agent_end:
+    - osagnent_cua.hook_end

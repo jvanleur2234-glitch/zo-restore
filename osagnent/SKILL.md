@@ -49,3 +49,36 @@ Employee works → Hermes Observe plugin (pre/post tool hooks)
 - Phase 2: Pattern Engine
 - Phase 3: Agent Generator
 - Phase 4: Clone Factory
+
+## OSagnent Skills (auto-installed)
+
+| Skill | Purpose | Status |
+|-------|---------|--------|
+| `osagnent-observe` | Screen watching + pattern detection | ✅ Active |
+| `osagnent-computer-use` | Desktop control via Hermes cua | ✅ Active |
+| `osagnent-voice` | Voice commands + output | ✅ Active |
+| `osagnent-auto-learn` | Pattern → skill generator | ✅ Active |
+
+## Plugin
+
+| Plugin | Hook | Purpose |
+|--------|------|---------|
+| `osagnent-observe` | pre/post tool | Kill switch + logging |
+| `osagnent-cua` | pre/post tool + agent lifecycle | Cua session tracking + action log |
+
+## Logs
+
+- Kill switch: `http://localhost:5015/agents`
+- Cua actions: `/tmp/osagnent-actions.log`
+- Cua session: `/tmp/osagnent-cua-session.json`
+- HERE API: `http://localhost:5015/`
+
+## Activate
+
+```bash
+hermes skills add osagnent-computer-use
+hermes skills add osagnent-observe
+hermes skills add osagnent-voice
+hermes skills add osagnent-auto-learn
+hermes computer-use install  # Mac only for now
+```
