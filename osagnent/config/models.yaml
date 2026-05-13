@@ -1,0 +1,19 @@
+# Free Models for OSagnent (24/7 operation)
+free_models:
+  - name: qwen-3-6b-plus
+    provider: groq
+    context_window: 1000000  # 1M tokens!
+    cost: free
+    use_case: general purpose, research, writing
+  
+  - name: owlalpha
+    provider: openrouter
+    context_window: 1000000
+    cost: free
+    use_case: backup when Qwen hits limits
+    
+# Model fallbacks - auto-switch when limits hit
+fallback_chain:
+  - qwen-3-6b-plus
+  - owlalpha
+  - llama-3.2-1b  # local fallback
