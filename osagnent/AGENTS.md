@@ -40,3 +40,4 @@ hermes chat -q "Start OSagnent observation for worker: jcpaid_001"
 # Do some tasks
 hermes chat -q "What did you learn from my session?"
 ```
+PLUR: Local-first persistent memory, zero-cost, YAML on disk
