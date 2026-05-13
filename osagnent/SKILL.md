@@ -166,3 +166,43 @@ HERMES (24/7 on VPS)
 ### Note
 
 Oh My Hermes is NOT Hermes OS. It's a skill/workflow layer on top of Hermes Agent. The naming is unfortunate but intentional (Oh My Zsh pattern).
+
+## Bot Detection Feature (2026-05-13)
+
+### What It Does
+- Checks if a Telegram user is a bot before Joseph messages them
+- Auto-warns Joseph if he messages a bot
+- Stores known bots in persistent memory
+
+### How It Works
+```
+Joseph messages @unknown_user
+  → Check username for "bot" suffix
+  → Query Telegram API: getChat(chat_id)
+  → If bot → auto-reply to Joseph: "⚠️ That's a bot"
+  → Store in HERE memory as known bot
+  → If human → normal flow continues
+```
+
+### Bot Detection Signals
+1. Username ends in "bot" (e.g., @SomeBotBot)
+2. Telegram API returns `"type": "bot"`
+3. No phone number (bots don't have phone numbers)
+4. Known bot list in HERE memory
+
+### Files
+- `core/bot_detect.py` — main detection engine
+- `skills/osagnent-bot-detect.md` — Hermes skill
+
+### Setup (Joseph needs to do this)
+1. Create a Telegram bot via @BotFather
+2. Save the token in Settings > Advanced as `TELEGRAM_BOT_TOKEN`
+3. Add the bot to any group Joseph wants to scan
+
+### Usage
+```bash
+hermes chat -q "Is @SomeUsernameBot a bot?"
+hermes chat -q "Check if 123456789 is a bot"
+hermes chat -q "Add @KnownSpamBot to bot list"
+hermes chat -q "Scan this group for bot accounts"
+```
